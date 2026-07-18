@@ -11,6 +11,16 @@ const PRODUCTS = {
   aqueenapro: 'https://www.zepter.kz/aqueenapro/water-purifying-systems/aqueenapro',
 };
 
+// Страница каталога, где перечислены все сменные фильтры с ценами.
+const CATALOG = 'https://www.zepter.kz/aqueenapro/water-purifying-systems';
+
+// Артикулы сменных фильтров, которые показываем в шпаргалке.
+const FILTER_IDS = [
+  'PWC-670-01', 'PWC-670-02', 'PWC-670-03', 'PWC-670-09N',
+  'WT-600-02', 'WT-600-01',
+  'WT-100-72', 'WT-100-73', 'WT-100-74', 'WT-100-75', 'WT-100-15',
+];
+
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
   '(KHTML, like Gecko) Chrome/125.0 Safari/537.36';
@@ -22,15 +32,35 @@ function formatPrice(raw) {
   return digits.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
-async function fetchPrice(url) {
+async function getHtml(url) {
   const res = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'ru' } });
   if (!res.ok) throw new Error('HTTP ' + res.status);
-  const html = await res.text();
+  return res.text();
+}
+
+async function fetchPrice(url) {
+  const html = await getHtml(url);
   const m = html.match(/data-remarket-itemvalue="([\d,]+)"/);
   if (!m) throw new Error('цена не найдена в разметке');
   const price = formatPrice(m[1]);
   if (!price) throw new Error('не удалось разобрать цену: ' + m[1]);
   return price;
+}
+
+// По странице каталога вытаскивает цену каждого фильтра по его артикулу.
+async function fetchFilters() {
+  const html = await getHtml(CATALOG);
+  const out = {};
+  for (const id of FILTER_IDS) {
+    const re = new RegExp(
+      'data-remarket-productid="' + id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') +
+        '"[\\s\\S]{0,400}?data-remarket-itemvalue="([\\d,]+)"',
+    );
+    const m = html.match(re);
+    const price = m ? formatPrice(m[1]) : null;
+    if (price) out[id] = price;
+  }
+  return out;
 }
 
 function todayAlmaty() {
@@ -58,6 +88,20 @@ async function main() {
     } catch (err) {
       report.push(`${key}: ОШИБКА (${err.message}) — оставляю прежнее значение ${prev[key] ?? '—'}`);
     }
+  }
+
+  try {
+    const filters = await fetchFilters();
+    const prevFilters = prev.filters || {};
+    next.filters = { ...prevFilters, ...filters };
+    const changed = Object.keys(filters).filter((id) => prevFilters[id] !== filters[id]);
+    report.push(
+      changed.length
+        ? `фильтры: обновлено ${changed.length} из ${Object.keys(filters).length} (${changed.join(', ')})`
+        : `фильтры: ${Object.keys(filters).length} шт. без изменений`,
+    );
+  } catch (err) {
+    report.push(`фильтры: ОШИБКА (${err.message}) — оставляю прежние цены`);
   }
 
   next.updated = todayAlmaty();

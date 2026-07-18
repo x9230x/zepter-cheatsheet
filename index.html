@@ -156,6 +156,23 @@
   .answer .say{background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:10px 13px; color:var(--accent-ink)}
   .answer strong{font-weight:700}
 
+  /* replacement filters */
+  .fcards{display:grid; gap:16px; grid-template-columns:1fr}
+  @media(min-width:760px){.fcards{grid-template-columns:repeat(3,1fr)}}
+  .fcard{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+  .fcard .ftop{height:5px}
+  .fcard .fbody{padding:16px 18px 18px}
+  .fcard h3{margin:0 0 4px; font-size:17px; letter-spacing:-.01em}
+  .fcard .fmodel{font-size:12px; color:var(--faint); margin-bottom:12px}
+  table.ftable{width:100%; border-collapse:collapse; font-size:13.5px}
+  table.ftable td{padding:9px 0; border-bottom:1px solid var(--line); vertical-align:top}
+  table.ftable tr:last-child td{border-bottom:0}
+  .ftable .fname{color:var(--ink); padding-right:10px}
+  .ftable .fsub{font-size:11.5px; color:var(--faint); margin-top:2px}
+  .ftable .fprice{font-weight:700; white-space:nowrap; text-align:right; font-variant-numeric:tabular-nums}
+  .fset{margin-top:12px; font-size:12.5px; color:var(--muted); border-top:1px dashed var(--line); padding-top:10px}
+  .fset b{color:var(--ink); font-weight:700; font-variant-numeric:tabular-nums}
+
   /* callout note */
   .note{display:flex; gap:12px; background:var(--gold-soft); border:1px solid color-mix(in srgb,var(--gold) 35%,transparent); border-radius:12px; padding:15px 16px; font-size:13.5px}
   .note .nic{flex:none; font-size:20px; line-height:1.2}
@@ -429,6 +446,61 @@
     </section>
 
     <section>
+      <div class="sec-head">
+        <span class="kicker">05 — Сменные фильтры</span>
+        <h2 style="margin-top:6px">Когда менять и сколько стоит</h2>
+      </div>
+      <div class="fcards">
+
+        <div class="fcard">
+          <div class="ftop" style="background:var(--edel)"></div>
+          <div class="fbody">
+            <h3>EdelWasser Gold</h3>
+            <div class="fmodel">PWC-670 · 4 фильтра</div>
+            <table class="ftable">
+              <tr><td class="fname">NEO-SENSE предфильтр<div class="fsub">каждые 6 мес</div></td><td class="fprice" id="f-PWC-670-01">10 800 ₸</td></tr>
+              <tr><td class="fname">INNO-SENSE фильтр<div class="fsub">каждые 18 мес</div></td><td class="fprice" id="f-PWC-670-02">14 040 ₸</td></tr>
+              <tr><td class="fname">RO-мембрана<div class="fsub">каждые 20–24 мес</div></td><td class="fprice" id="f-PWC-670-03">69 120 ₸</td></tr>
+              <tr><td class="fname">Гигиенический (серебро)<div class="fsub">каждые 12–20 мес</div></td><td class="fprice" id="f-PWC-670-09N">7 020 ₸</td></tr>
+            </table>
+            <div class="fset">Полный комплект: <b id="fset-edel">100 980 ₸</b></div>
+          </div>
+        </div>
+
+        <div class="fcard">
+          <div class="ftop" style="background:var(--evo)"></div>
+          <div class="fbody">
+            <h3>AqueenaEVO</h3>
+            <div class="fmodel">WT-600 · 2 фильтра</div>
+            <table class="ftable">
+              <tr><td class="fname">PAC-предфильтр<div class="fsub">каждые 6–12 мес</div></td><td class="fprice" id="f-WT-600-02">22 680 ₸</td></tr>
+              <tr><td class="fname">RO-фильтр (модуль)<div class="fsub">каждые 12–18 мес</div></td><td class="fprice" id="f-WT-600-01">89 100 ₸</td></tr>
+            </table>
+            <div class="fset">Полный комплект: <b id="fset-evo">111 780 ₸</b></div>
+          </div>
+        </div>
+
+        <div class="fcard">
+          <div class="ftop" style="background:var(--pro)"></div>
+          <div class="fbody">
+            <h3>AqueenaPRO</h3>
+            <div class="fmodel">WT-100 · 5 фильтров</div>
+            <table class="ftable">
+              <tr><td class="fname">ПП-фильтр 5 мкм<div class="fsub">каждые 6 мес</div></td><td class="fprice" id="f-WT-100-72">11 070 ₸</td></tr>
+              <tr><td class="fname">Угольный фильтр<div class="fsub">каждые 6 мес</div></td><td class="fprice" id="f-WT-100-73">12 150 ₸</td></tr>
+              <tr><td class="fname">ПП-фильтр 1 мкм<div class="fsub">каждые 6 мес</div></td><td class="fprice" id="f-WT-100-74">11 340 ₸</td></tr>
+              <tr><td class="fname">Кокосовый постфильтр<div class="fsub">каждые 12 мес</div></td><td class="fprice" id="f-WT-100-75">9 990 ₸</td></tr>
+              <tr><td class="fname">RO-мембрана<div class="fsub">каждые 12 мес</div></td><td class="fprice" id="f-WT-100-15">39 420 ₸</td></tr>
+            </table>
+            <div class="fset">Полный комплект: <b id="fset-pro">83 970 ₸</b></div>
+          </div>
+        </div>
+
+      </div>
+      <p style="font-size:12.5px; color:var(--faint); margin:14px 0 0">Сроки замены ориентировочные — зависят от качества и напора воды. Индикатор на EVO и PRO подскажет точнее. «Полный комплект» — стоимость всех фильтров модели, меняются они в разное время.</p>
+    </section>
+
+    <section>
       <div class="note">
         <span class="nic" aria-hidden="true">💧</span>
         <div><strong>Главное отличие в одну фразу:</strong> EdelWasser — доступная и без электричества; EVO — максимум ступеней и воды без бака; PRO — премиум под мойку с насосом, баком и защитой от протечки. Дальше подбираем по ситуации клиента: розетка, давление воды, объём семьи и бюджет.</div>
@@ -459,6 +531,23 @@
       if(p.aqueenaevo){ set('price-evo-t', p.aqueenaevo+' ₸'); set('price-evo-c', p.aqueenaevo); }
       if(p.aqueenapro){ set('price-pro-t', p.aqueenapro+' ₸'); set('price-pro-c', p.aqueenapro); }
       if(p.updated){ set('updated-date', p.updated); set('updated-date-foot', p.updated); }
+      if(p.filters){
+        var f = p.filters;
+        Object.keys(f).forEach(function(id){ set('f-' + id, f[id] ? f[id] + ' ₸' : null); });
+        var groups = {
+          'fset-edel': ['PWC-670-01','PWC-670-02','PWC-670-03','PWC-670-09N'],
+          'fset-evo': ['WT-600-02','WT-600-01'],
+          'fset-pro': ['WT-100-72','WT-100-73','WT-100-74','WT-100-75','WT-100-15']
+        };
+        Object.keys(groups).forEach(function(gid){
+          var sum = 0, ok = true;
+          groups[gid].forEach(function(id){
+            var n = f[id] ? parseInt(f[id].replace(/\D/g, ''), 10) : NaN;
+            if(isNaN(n)) ok = false; else sum += n;
+          });
+          if(ok) set(gid, sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₸');
+        });
+      }
     })
     .catch(function(){});
 </script>
