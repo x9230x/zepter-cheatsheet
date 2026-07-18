@@ -18,11 +18,17 @@ jobs:
         with:
           node-version: '20'
 
-      - name: update
+      - name: Update prices
         run: node scripts/update-prices.mjs
 
-      - name: commit
+      - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git
+          git add prices.json
+          if git diff --staged --quiet; then
+            echo "No changes."
+          else
+            git commit -m "chore: update prices $(date -u +%F)"
+            git push
+          fi
