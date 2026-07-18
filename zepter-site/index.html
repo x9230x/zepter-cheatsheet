@@ -1,0 +1,451 @@
+<title>Шпаргалка Zepter — системы очистки воды</title>
+<style>
+  :root{
+    --ground:#eef3f5; --surface:#ffffff; --surface-2:#f6f9fa;
+    --ink:#0f2630; --muted:#5b727c; --faint:#8598a0; --line:#dde7ea;
+    --accent:#0a7c9c; --accent-ink:#075064; --accent-soft:#e0eff3;
+    --gold:#a8842f; --gold-soft:#f4ecd8;
+    --good:#2b8a63; --good-soft:#e4f2ea;
+    --bad:#b45a37; --bad-soft:#f6e9e2;
+    --evo:#0a7c9c; --pro:#1f5aa8; --edel:#a8842f;
+    --shadow:0 1px 2px rgba(15,38,48,.05),0 4px 16px rgba(15,38,48,.06);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#0a161c; --surface:#10222b; --surface-2:#0d1d25;
+      --ink:#e9f2f4; --muted:#93a8b0; --faint:#6f858d; --line:#213842;
+      --accent:#3bb6d6; --accent-ink:#bfe6f0; --accent-soft:#123039;
+      --gold:#d8b96b; --gold-soft:#2a2415;
+      --good:#4fc191; --good-soft:#122c22;
+      --bad:#e08a63; --bad-soft:#2c1c14;
+      --evo:#3bb6d6; --pro:#6ba0e6; --edel:#d8b96b;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0a161c; --surface:#10222b; --surface-2:#0d1d25;
+    --ink:#e9f2f4; --muted:#93a8b0; --faint:#6f858d; --line:#213842;
+    --accent:#3bb6d6; --accent-ink:#bfe6f0; --accent-soft:#123039;
+    --gold:#d8b96b; --gold-soft:#2a2415;
+    --good:#4fc191; --good-soft:#122c22; --bad:#e08a63; --bad-soft:#2c1c14;
+    --evo:#3bb6d6; --pro:#6ba0e6; --edel:#d8b96b;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+  }
+  :root[data-theme="light"]{
+    --ground:#eef3f5; --surface:#ffffff; --surface-2:#f6f9fa;
+    --ink:#0f2630; --muted:#5b727c; --faint:#8598a0; --line:#dde7ea;
+    --accent:#0a7c9c; --accent-ink:#075064; --accent-soft:#e0eff3;
+    --gold:#a8842f; --gold-soft:#f4ecd8;
+    --good:#2b8a63; --good-soft:#e4f2ea; --bad:#b45a37; --bad-soft:#f6e9e2;
+    --evo:#0a7c9c; --pro:#1f5aa8; --edel:#a8842f;
+    --shadow:0 1px 2px rgba(15,38,48,.05),0 4px 16px rgba(15,38,48,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0}
+  .wrap{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:var(--ground); color:var(--ink);
+    -webkit-font-smoothing:antialiased; line-height:1.55;
+    padding:0 0 64px;
+  }
+  .container{max-width:940px; margin:0 auto; padding:0 18px}
+  .eyebrow{
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent); font-weight:600; margin:0 0 6px;
+  }
+  h1{font-size:clamp(26px,5.5vw,40px); line-height:1.1; margin:0; letter-spacing:-.02em; text-wrap:balance}
+  h2{font-size:clamp(20px,4vw,26px); margin:0; letter-spacing:-.01em; text-wrap:balance}
+  .lead{color:var(--muted); font-size:16px; margin:12px 0 0; max-width:60ch}
+
+  /* header */
+  header.hero{
+    background:
+      radial-gradient(120% 100% at 100% 0%, var(--accent-soft) 0%, transparent 60%),
+      var(--surface);
+    border-bottom:1px solid var(--line);
+    padding:34px 0 30px;
+  }
+  .toolbar{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb,var(--surface) 88%, transparent);
+    backdrop-filter:saturate(1.4) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .toolbar .container{display:flex; align-items:center; gap:12px; padding-top:10px; padding-bottom:10px; flex-wrap:wrap}
+  .toolbar .brand{font-weight:700; letter-spacing:-.01em; font-size:15px; margin-right:auto; display:flex; align-items:center; gap:8px}
+  .drop{width:9px; height:9px; border-radius:50% 50% 50% 0; background:var(--accent); transform:rotate(-45deg)}
+  .seg{display:inline-flex; background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:3px}
+  .seg button{
+    font:inherit; font-size:13px; font-weight:600; border:0; background:transparent; color:var(--muted);
+    padding:6px 13px; border-radius:999px; cursor:pointer; transition:.15s;
+  }
+  .seg button[aria-pressed="true"]{background:var(--accent); color:#fff}
+  :root[data-theme="dark"] .seg button[aria-pressed="true"],
+  @media (prefers-color-scheme:dark){}
+  .themebtn{font:inherit; font-size:13px; font-weight:600; cursor:pointer; border:1px solid var(--line); background:var(--surface-2); color:var(--muted); border-radius:999px; padding:7px 12px}
+
+  section{padding:34px 0 6px}
+  .sec-head{margin-bottom:18px}
+  .kicker{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); font-weight:600}
+
+  /* comparison table */
+  .tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); box-shadow:var(--shadow)}
+  table{border-collapse:collapse; width:100%; min-width:620px; font-size:14px}
+  th,td{text-align:left; padding:13px 16px; border-bottom:1px solid var(--line); vertical-align:top}
+  thead th{position:sticky; top:0; background:var(--surface-2); font-size:12.5px; letter-spacing:.02em; z-index:1}
+  tbody th{font-weight:600; color:var(--muted); white-space:nowrap; font-size:13px}
+  td strong{font-weight:600}
+  tbody tr:last-child td, tbody tr:last-child th{border-bottom:0}
+  .m-evo{color:var(--evo)} .m-pro{color:var(--pro)} .m-edel{color:var(--edel)}
+  .th-model{font-weight:700; font-size:14px}
+  .th-model span{display:block; font-size:11.5px; font-weight:500; color:var(--faint); letter-spacing:0; text-transform:none}
+  .price{font-variant-numeric:tabular-nums; font-weight:700; white-space:nowrap}
+  .tag{display:inline-block; font-size:11px; font-weight:600; padding:2px 8px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink); white-space:nowrap}
+  .best{background:var(--good-soft); color:var(--good)}
+
+  /* model cards */
+  .cards{display:grid; gap:16px; grid-template-columns:1fr}
+  @media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column}
+  .card .top{height:5px}
+  .card .body{padding:18px 18px 20px; display:flex; flex-direction:column; gap:14px; flex:1}
+  .badge{align-self:flex-start; font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:4px 10px; border-radius:999px}
+  .card h3{margin:0; font-size:19px; letter-spacing:-.01em}
+  .card .model-sub{font-size:12.5px; color:var(--faint); margin-top:-8px}
+  .pricebox{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap}
+  .pricebox .big{font-size:23px; font-weight:800; font-variant-numeric:tabular-nums}
+  .pricebox .cur{font-size:14px; font-weight:600; color:var(--muted)}
+  .pricebox .old{font-size:13px; color:var(--faint); text-decoration:line-through}
+  .plist{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px; font-size:13.5px}
+  .plist li{display:flex; gap:8px; align-items:flex-start}
+  .ic{flex:none; width:17px; height:17px; border-radius:50%; display:grid; place-items:center; font-size:11px; font-weight:800; margin-top:1px}
+  .ic.plus{background:var(--good-soft); color:var(--good)}
+  .ic.minus{background:var(--bad-soft); color:var(--bad)}
+  .who{margin-top:auto; background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:11px 12px; font-size:13px}
+  .who b{display:block; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--faint); margin-bottom:3px}
+
+  /* decision matrix */
+  .grid2{display:grid; gap:12px; grid-template-columns:1fr}
+  @media(min-width:620px){.grid2{grid-template-columns:1fr 1fr}}
+  .row{background:var(--surface); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); padding:14px 16px; display:flex; flex-direction:column; gap:8px}
+  .row .q{font-size:14px; font-weight:600}
+  .row .q .quote{color:var(--muted); font-weight:400}
+  .row .a{display:flex; align-items:center; gap:9px; font-size:14px}
+  .arrow{color:var(--accent); font-weight:800}
+  .pill{font-size:12.5px; font-weight:700; padding:4px 11px; border-radius:999px}
+  .pill.evo{background:var(--accent-soft); color:var(--accent-ink)}
+  .pill.pro{background:color-mix(in srgb,var(--pro) 16%, transparent); color:var(--pro)}
+  .pill.edel{background:var(--gold-soft); color:var(--gold)}
+
+  /* objections accordion */
+  .acc{display:flex; flex-direction:column; gap:10px}
+  details{background:var(--surface); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); overflow:hidden}
+  summary{cursor:pointer; list-style:none; padding:15px 16px; font-weight:600; font-size:15px; display:flex; align-items:center; gap:10px}
+  summary::-webkit-details-marker{display:none}
+  summary .chev{margin-left:auto; color:var(--faint); transition:.2s; flex:none}
+  details[open] summary .chev{transform:rotate(90deg)}
+  summary .qic{flex:none; width:24px; height:24px; border-radius:7px; background:var(--accent-soft); color:var(--accent-ink); display:grid; place-items:center; font-weight:800; font-size:13px}
+  .answer{padding:0 16px 16px; font-size:14px; color:var(--ink)}
+  .answer p{margin:0 0 10px} .answer p:last-child{margin:0}
+  .answer .say{background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:10px 13px; color:var(--accent-ink)}
+  .answer strong{font-weight:700}
+
+  /* callout note */
+  .note{display:flex; gap:12px; background:var(--gold-soft); border:1px solid color-mix(in srgb,var(--gold) 35%,transparent); border-radius:12px; padding:15px 16px; font-size:13.5px}
+  .note .nic{flex:none; font-size:20px; line-height:1.2}
+  footer{color:var(--faint); font-size:12px; text-align:center; padding:28px 18px 0}
+  a{color:var(--accent)}
+</style>
+
+<div class="wrap" id="app">
+
+  <div class="toolbar">
+    <div class="container">
+      <div class="brand"><span class="drop" aria-hidden="true"></span>Zepter · очистка воды</div>
+      <span id="freshChip" style="margin-left:auto; font-size:12px; font-weight:600; color:var(--muted); background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:6px 11px; white-space:nowrap">Цены проверены: <span id="updated-date">18.07.2026</span></span>
+      <button class="themebtn" onclick="toggleTheme()" aria-label="Сменить тему">Тема</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Шпаргалка консультанта</p>
+      <h1>Три системы очистки воды: с чем сравниваем и что отвечать клиенту</h1>
+      <p class="lead">Все три — обратный осмос. Разница в питании (свет / без света), объёме воды и способе установки. Ниже — таблица, разбор каждой модели, готовые ответы «если клиент говорит…» и работа с возражениями.</p>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <section>
+      <div class="sec-head"><span class="kicker">01 — Быстрое сравнение</span></div>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Параметр</th>
+              <th class="th-model m-edel">EdelWasser Gold<span>PWC-670-GOLD</span></th>
+              <th class="th-model m-evo">AqueenaEVO<span>WT-600</span></th>
+              <th class="th-model m-pro">AqueenaPRO<span>под мойку</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th>Цена</th>
+              <td class="price" id="price-edel-t">391 500 ₸</td>
+              <td class="price" id="price-evo-t">480 600 ₸</td>
+              <td class="price" id="price-pro-t">783 000 ₸</td>
+            </tr>
+            <tr><th>Технология</th>
+              <td>Осмос, 5 ступеней</td>
+              <td>Осмос, <strong>7 ступеней</strong></td>
+              <td>Осмос, 5 ступеней</td>
+            </tr>
+            <tr><th>Электричество</th>
+              <td><span class="tag best">Не нужно</span></td>
+              <td>Нужно · 85 Вт</td>
+              <td>Нужно · 25 Вт (насос)</td>
+            </tr>
+            <tr><th>Накопит. бак</th>
+              <td>3,9 л</td>
+              <td><span class="tag">Проточная, без бака</span></td>
+              <td>9,5 л</td>
+            </tr>
+            <tr><th>Производительность</th>
+              <td>77–112 л/сут</td>
+              <td><strong>2000 л/сут</strong> · 1,6 л/мин</td>
+              <td>~75 л/сут</td>
+            </tr>
+            <tr><th>Установка</th>
+              <td>Настольная</td>
+              <td>Настольная или под мойку</td>
+              <td>Только под мойку</td>
+            </tr>
+            <tr><th>Вес (нетто)</th>
+              <td>4,5 кг</td><td>7,1 кг</td><td>11,5 кг</td>
+            </tr>
+            <tr><th>Цвет</th>
+              <td>Золотой</td><td>Золотой</td><td>Белый</td>
+            </tr>
+            <tr><th>Гарантия</th>
+              <td>2 года</td><td>2 года</td><td><span class="tag best">3 года</span></td>
+            </tr>
+            <tr><th>Сертификаты</th>
+              <td><span class="tag best">NSF/ANSI 42·53·58</span></td>
+              <td>Международные</td>
+              <td>CE · RoHS · EMC</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="kicker">02 — Модели: плюсы и минусы</span></div>
+      <div class="cards">
+
+        <article class="card">
+          <div class="top" style="background:var(--edel)"></div>
+          <div class="body">
+            <span class="badge" style="background:var(--gold-soft); color:var(--gold)">Доступная · без света</span>
+            <h3>EdelWasser Gold</h3>
+            <div class="model-sub">PWC-670-GOLD · золотой · 4,5 кг</div>
+            <div class="pricebox">
+              <span class="big" id="price-edel-c">391 500</span><span class="cur">₸</span>
+            </div>
+            <ul class="plist">
+              <li><span class="ic plus">+</span>Работает <strong>без электричества</strong> — не зависит от розетки</li>
+              <li><span class="ic plus">+</span>Самая низкая цена из трёх</li>
+              <li><span class="ic plus">+</span>Компактная, лёгкая, настольная</li>
+              <li><span class="ic plus">+</span>Сертификаты <strong>NSF/ANSI 58</strong> — золотой стандарт</li>
+              <li><span class="ic plus">+</span>Серебряный гигиенический фильтр от бактерий</li>
+              <li><span class="ic minus">−</span>Малый бак 3,9 л — для большой семьи маловато</li>
+              <li><span class="ic minus">−</span>При слабом напоре падает производительность</li>
+            </ul>
+            <div class="who"><b>Кому предлагать</b>Небольшой семье, съёмному жилью, где нет розетки, бюджетным клиентам.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="top" style="background:var(--evo)"></div>
+          <div class="body">
+            <span class="badge" style="background:var(--accent-soft); color:var(--accent-ink)">Максимум очистки</span>
+            <h3>AqueenaEVO</h3>
+            <div class="model-sub">WT-600 · золотой · проточная</div>
+            <div class="pricebox">
+              <span class="big" id="price-evo-c">480 600</span><span class="cur">₸</span>
+            </div>
+            <ul class="plist">
+              <li><span class="ic plus">+</span><strong>7 ступеней</strong> очистки — больше всех</li>
+              <li><span class="ic plus">+</span>Проточная — <strong>нет застоя воды</strong> и бака</li>
+              <li><span class="ic plus">+</span>2000 л/сут — вода сразу, без ожидания</li>
+              <li><span class="ic plus">+</span>Экономный расход 2:1, удаляет PFAS/PFOS</li>
+              <li><span class="ic plus">+</span>LED-панель, замена фильтров без инструмента</li>
+              <li><span class="ic minus">−</span>Нужна розетка (85 Вт)</li>
+              <li><span class="ic minus">−</span>Гарантия 2 года</li>
+            </ul>
+            <div class="who"><b>Кому предлагать</b>Семьям с большим расходом воды, любителям современных технологий и максимальной чистоты.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="top" style="background:var(--pro)"></div>
+          <div class="body">
+            <span class="badge" style="background:color-mix(in srgb,var(--pro) 16%,transparent); color:var(--pro)">Премиум · под мойку</span>
+            <h3>AqueenaPRO</h3>
+            <div class="model-sub">под мойку · белый · 11,5 кг</div>
+            <div class="pricebox">
+              <span class="big" id="price-pro-c">783 000</span><span class="cur">₸</span>
+            </div>
+            <ul class="plist">
+              <li><span class="ic plus">+</span><strong>Гарантия 3 года</strong> — самая длинная</li>
+              <li><span class="ic plus">+</span><strong>Насос высокого давления</strong> — тянет при слабом напоре</li>
+              <li><span class="ic plus">+</span>Бак 9,5 л — запас воды всегда готов</li>
+              <li><span class="ic plus">+</span>Датчик протечки, защита от затопления</li>
+              <li><span class="ic plus">+</span>Кокосовый постфильтр — вкус воды</li>
+              <li><span class="ic minus">−</span>Самая дорогая, тяжёлая и крупная</li>
+              <li><span class="ic minus">−</span>Только монтаж под мойку, ждать бак ~30 мин</li>
+            </ul>
+            <div class="who"><b>Кому предлагать</b>Постоянному жилью и частным домам со слабым давлением; кто хочет надёжность и защиту от протечки.</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="kicker">03 — «Если клиент говорит…»</span>
+        <h2 style="margin-top:6px">Быстрый подбор модели</h2>
+      </div>
+      <div class="grid2">
+        <div class="row">
+          <div class="q"><span class="quote">«</span>Нужно подешевле<span class="quote">»</span></div>
+          <div class="a"><span class="arrow">→</span><span class="pill edel">EdelWasser Gold</span></div>
+        </div>
+        <div class="row">
+          <div class="q"><span class="quote">«</span>Нет розетки / боюсь скачков напряжения<span class="quote">»</span></div>
+          <div class="a"><span class="arrow">→</span><span class="pill edel">EdelWasser Gold</span></div>
+        </div>
+        <div class="row">
+          <div class="q"><span class="quote">«</span>Слабое давление воды<span class="quote">»</span></div>
+          <div class="a"><span class="arrow">→</span><span class="pill pro">AqueenaPRO</span> <span style="font-size:12.5px;color:var(--muted)">насос</span></div>
+        </div>
+        <div class="row">
+          <div class="q"><span class="quote">«</span>Большая семья, много воды, не хочу ждать<span class="quote">»</span></div>
+          <div class="a"><span class="arrow">→</span><span class="pill evo">AqueenaEVO</span></div>
+        </div>
+        <div class="row">
+          <div class="q"><span class="quote">«</span>Хочу самую чистую воду / боюсь химии<span class="quote">»</span></div>
+          <div class="a"><span class="arrow">→</span><span class="pill evo">AqueenaEVO</span> <span style="font-size:12.5px;color:var(--muted)">или</span> <span class="pill edel">EdelWasser</span></div>
+        </div>
+        <div class="row">
+          <div class="q"><span class="quote">«</span>Что надёжнее по гарантии<span class="quote">»</span></div>
+          <div class="a"><span class="arrow">→</span><span class="pill pro">AqueenaPRO</span> <span style="font-size:12.5px;color:var(--muted)">3 года</span></div>
+        </div>
+        <div class="row">
+          <div class="q"><span class="quote">«</span>Не хочу застоя воды в баке<span class="quote">»</span></div>
+          <div class="a"><span class="arrow">→</span><span class="pill evo">AqueenaEVO</span> <span style="font-size:12.5px;color:var(--muted)">проточная</span></div>
+        </div>
+        <div class="row">
+          <div class="q"><span class="quote">«</span>Боюсь затопить квартиру<span class="quote">»</span></div>
+          <div class="a"><span class="arrow">→</span><span class="pill pro">AqueenaPRO</span> <span style="font-size:12.5px;color:var(--muted)">датчик протечки</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="kicker">04 — Работа с возражениями</span>
+        <h2 style="margin-top:6px">Что отвечать на частые вопросы</h2>
+      </div>
+      <div class="acc">
+
+        <details>
+          <summary><span class="qic">?</span>«Дорого»<span class="chev">›</span></summary>
+          <div class="answer">
+            <p>Считаем не цену прибора, а стоимость литра. Семья тратит на бутилированную воду ~10–15 тыс ₸ в месяц. Система окупается за год-полтора, а служит годами.</p>
+            <p class="say">«Давайте посчитаем, сколько вы тратите на воду в бутылях за год — часто система выходит выгоднее уже на второй год, а вода всегда свежая и дома».</p>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="qic">?</span>«А зачем вообще осмос? У меня и так вода нормальная»<span class="chev">›</span></summary>
+          <div class="answer">
+            <p>Обратный осмос убирает то, что не видно и не чувствуется на вкус: тяжёлые металлы (свинец, мышьяк, ртуть), нитраты, хлор, микропластик, бактерии и вирусы. Обычный кувшин так не умеет.</p>
+            <p class="say">«Вода может быть прозрачной и всё равно содержать хлор и тяжёлые металлы. Осмос — это фильтрация на уровне молекул, чище только дистиллят».</p>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="qic">?</span>«Говорят, осмос вреден — вымывает минералы»<span class="chev">›</span></summary>
+          <div class="answer">
+            <p>Основной источник минералов для организма — еда, а не вода. Осмос делает воду безопасной, убирая вредное. Модели с постфильтром (кокосовый в PRO) улучшают вкус и структуру воды.</p>
+            <p class="say">«Минералы мы получаем в основном из пищи. Гораздо важнее убрать из воды тяжёлые металлы и хлор — а это как раз делает осмос».</p>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="qic">?</span>«Сколько стоит обслуживание? Фильтры дорогие?»<span class="chev">›</span></summary>
+          <div class="answer">
+            <p>Расходники есть у всех систем. Ориентиры по замене:</p>
+            <p>• <strong>EdelWasser</strong> — мембрана служит до 20–24 мес (самый долгий ресурс), предфильтр раз в 6 мес.<br>
+               • <strong>EVO</strong> — предфильтр раз в 6–12 мес, RO-модуль раз в 12–18 мес.<br>
+               • <strong>PRO</strong> — большинство фильтров раз в 6 мес, мембрана и кокос раз в 12 мес.</p>
+            <p class="say">«Фильтры меняются 1–2 раза в год, это дешевле, чем возить бутылки. Индикатор сам подскажет, когда пора».</p>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="qic">?</span>«Сложно ли установить?»<span class="chev">›</span></summary>
+          <div class="answer">
+            <p><strong>EdelWasser</strong> и <strong>EVO</strong> можно поставить на столешницу — минимум работ. <strong>PRO</strong> и EVO (под мойку) требуют подключения к водопроводу — рекомендуем профессиональный монтаж, всё необходимое идёт в комплекте.</p>
+            <p class="say">«Если не хотите сантехнических работ — берём настольный вариант. Нужен скрытый монтаж под мойку — сделает мастер, комплект уже полный».</p>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="qic">?</span>«Чем Zepter лучше китайских фильтров с маркетплейса?»<span class="chev">›</span></summary>
+          <div class="answer">
+            <p>Швейцарский бренд Home Art &amp; Sales Services AG, официальная гарантия (2–3 года), международные сертификаты (NSF/ANSI у EdelWasser), сервис и оригинальные расходники. Это не одноразовая покупка, а система с поддержкой.</p>
+            <p class="say">«Здесь вы платите за проверенное качество, гарантию и сервис — фильтр для питьевой воды это не то, на чём стоит экономить на здоровье».</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="note">
+        <span class="nic" aria-hidden="true">💧</span>
+        <div><strong>Главное отличие в одну фразу:</strong> EdelWasser — доступная и без электричества; EVO — максимум ступеней и воды без бака; PRO — премиум под мойку с насосом, баком и защитой от протечки. Дальше подбираем по ситуации клиента: розетка, давление воды, объём семьи и бюджет.</div>
+      </div>
+    </section>
+
+    <footer>
+      Данные с zepter.kz · цены обновлены: <span id="updated-date-foot">18.07.2026</span> · для внутреннего использования консультантами. Уточняйте актуальные цены и наличие перед сделкой.
+    </footer>
+
+  </div>
+</div>
+
+<script>
+  function toggleTheme(){
+    var r=document.documentElement;
+    var cur=r.getAttribute('data-theme');
+    if(!cur){ cur = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark':'light'; }
+    r.setAttribute('data-theme', cur==='dark'?'light':'dark');
+  }
+
+  fetch('prices.json?v=' + Date.now())
+    .then(function(res){ return res.ok ? res.json() : null; })
+    .then(function(p){
+      if(!p) return;
+      function set(id, txt){ var el=document.getElementById(id); if(el && txt) el.textContent=txt; }
+      if(p.edelwasser){ set('price-edel-t', p.edelwasser+' ₸'); set('price-edel-c', p.edelwasser); }
+      if(p.aqueenaevo){ set('price-evo-t', p.aqueenaevo+' ₸'); set('price-evo-c', p.aqueenaevo); }
+      if(p.aqueenapro){ set('price-pro-t', p.aqueenapro+' ₸'); set('price-pro-c', p.aqueenapro); }
+      if(p.updated){ set('updated-date', p.updated); set('updated-date-foot', p.updated); }
+    })
+    .catch(function(){});
+</script>
