@@ -112,8 +112,13 @@
   /* model cards */
   .cards{display:grid; gap:16px; grid-template-columns:1fr}
   @media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
-  .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column}
-  .card .top{height:5px}
+  .card{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column}
+  .card .top{height:5px; position:relative; z-index:2}
+  .card::after{content:""; position:absolute; right:-6%; bottom:-4%; width:66%; height:64%; background-repeat:no-repeat; background-position:bottom right; background-size:contain; opacity:.11; pointer-events:none; z-index:0}
+  .card.bg-edel::after{background-image:url(img/edelwasser.png)}
+  .card.bg-evo::after{background-image:url(img/aqueenaevo.jpg); opacity:.09}
+  .card.bg-pro::after{background-image:url(img/aqueenapro.png)}
+  .card .body{position:relative; z-index:1}
   .card .body{padding:18px 18px 20px; display:flex; flex-direction:column; gap:14px; flex:1}
   .badge{align-self:flex-start; font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:4px 10px; border-radius:999px}
   .card h3{margin:0; font-size:19px; letter-spacing:-.01em}
@@ -279,7 +284,7 @@
       <div class="sec-head"><span class="kicker">02 — Модели: плюсы и минусы</span></div>
       <div class="cards">
 
-        <article class="card">
+        <article class="card bg-edel">
           <div class="top" style="background:var(--edel)"></div>
           <div class="body">
             <span class="badge" style="background:var(--gold-soft); color:var(--gold)">Доступная · без света</span>
@@ -303,7 +308,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card bg-evo">
           <div class="top" style="background:var(--evo)"></div>
           <div class="body">
             <span class="badge" style="background:var(--accent-soft); color:var(--accent-ink)">Максимум очистки</span>
@@ -325,7 +330,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card bg-pro">
           <div class="top" style="background:var(--pro)"></div>
           <div class="body">
             <span class="badge" style="background:color-mix(in srgb,var(--pro) 16%,transparent); color:var(--pro)">Премиум · под мойку</span>
