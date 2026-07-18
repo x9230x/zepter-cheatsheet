@@ -114,9 +114,9 @@
   @media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
   .card{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column}
   .card .top{height:5px; position:relative; z-index:2}
-  .card::after{content:""; position:absolute; right:-6%; bottom:-4%; width:66%; height:64%; background-repeat:no-repeat; background-position:bottom right; background-size:contain; opacity:.11; pointer-events:none; z-index:0}
+  .card::after{content:""; position:absolute; inset:5px 0 0; background-repeat:no-repeat; background-position:center; background-size:76% auto; opacity:.09; pointer-events:none; z-index:0}
   .card.bg-edel::after{background-image:url(img/edelwasser.png)}
-  .card.bg-evo::after{background-image:url(img/aqueenaevo.jpg); opacity:.09}
+  .card.bg-evo::after{background-image:url(img/aqueenaevo.jpg); opacity:.07}
   .card.bg-pro::after{background-image:url(img/aqueenapro.png)}
   .card .body{position:relative; z-index:1}
   .card .body{padding:18px 18px 20px; display:flex; flex-direction:column; gap:14px; flex:1}
