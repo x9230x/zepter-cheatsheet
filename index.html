@@ -122,6 +122,12 @@
   .pricebox .big{font-size:23px; font-weight:800; font-variant-numeric:tabular-nums}
   .pricebox .cur{font-size:14px; font-weight:600; color:var(--muted)}
   .pricebox .old{font-size:13px; color:var(--faint); text-decoration:line-through}
+  .was{color:var(--faint); text-decoration:line-through; font-weight:600}
+  .pricebox .was{font-size:15px}
+  .sale{color:var(--bad)}
+  .salebadge{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; padding:3px 9px; border-radius:999px; background:var(--bad-soft); color:var(--bad); align-self:center}
+  .price .was{display:block; font-size:12px}
+  .price .sale{display:block; font-weight:700}
   .plist{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px; font-size:13.5px}
   .plist li{display:flex; gap:8px; align-items:flex-start}
   .ic{flex:none; width:17px; height:17px; border-radius:50%; display:grid; place-items:center; font-size:11px; font-weight:800; margin-top:1px}
@@ -218,7 +224,7 @@
             <tr><th>Цена</th>
               <td class="price" id="price-edel-t">391 500 ₸</td>
               <td class="price" id="price-evo-t">480 600 ₸</td>
-              <td class="price" id="price-pro-t">783 000 ₸</td>
+              <td class="price"><s class="was" id="price-pro-t">783 000 ₸</s><span class="sale">690 000 ₸</span></td>
             </tr>
             <tr><th>Технология</th>
               <td>Осмос, 5 ступеней</td>
@@ -324,7 +330,9 @@
             <h3>AqueenaPRO</h3>
             <div class="model-sub">под мойку · белый · 11,5 кг</div>
             <div class="pricebox">
-              <span class="big" id="price-pro-c">783 000</span><span class="cur">₸</span>
+              <span class="was"><span id="price-pro-c">783 000</span> ₸</span>
+              <span class="big sale">690 000</span><span class="cur">₸</span>
+              <span class="salebadge">скидка</span>
             </div>
             <ul class="plist">
               <li><span class="ic plus">+</span><strong>Гарантия 3 года</strong> — самая длинная</li>
