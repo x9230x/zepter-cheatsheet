@@ -2,7 +2,10 @@ name: Update prices
 
 on:
   schedule:
-    - cron: '0 3 * * *'
+    # 03:17 UTC = 08:17 по Алматы. Некруглая минута — GitHub реже пропускает запуск.
+    - cron: '17 3 * * *'
+    # запасной прогон в обед на случай, если утренний пропустят
+    - cron: '17 9 * * *'
   workflow_dispatch: {}
 
 permissions:
