@@ -6,7 +6,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 
 const PRODUCTS = {
-  edelwasser: 'https://www.zepter.kz/aqueenapro/water-purifying-systems/edelwasser-filtration-appliance-gold-line-1336',
   aqueenaevo: 'https://www.zepter.kz/aqueenapro/water-purifying-systems/aqueenaevo',
   aqueenapro: 'https://www.zepter.kz/aqueenapro/water-purifying-systems/aqueenapro',
 };
@@ -16,7 +15,6 @@ const CATALOG = 'https://www.zepter.kz/aqueenapro/water-purifying-systems';
 
 // Артикулы сменных фильтров, которые показываем в шпаргалке.
 const FILTER_IDS = [
-  'PWC-670-01', 'PWC-670-02', 'PWC-670-03', 'PWC-670-09N',
   'WT-600-02', 'WT-600-01',
   'WT-100-72', 'WT-100-73', 'WT-100-74', 'WT-100-75', 'WT-100-15',
 ];

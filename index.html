@@ -115,7 +115,7 @@
   .card{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column}
   .card .top{height:5px; position:relative; z-index:2}
   .card::after{content:""; position:absolute; inset:5px 0 0; background-repeat:no-repeat; background-position:center; background-size:auto 88%; opacity:.13; pointer-events:none; z-index:0}
-  .card.bg-edel::after{background-image:url(img/edelwasser.png)}
+  .card.bg-edel::after{background-image:url(img/omoikiri.png)}
   .card.bg-evo::after{background-image:url(img/aqueenaevo.png)}
   .card.bg-pro::after{background-image:url(img/aqueenapro.png)}
   .card .body{position:relative; z-index:1}
@@ -197,7 +197,7 @@
 
   <div class="toolbar">
     <div class="container">
-      <div class="brand"><span class="drop" aria-hidden="true"></span>Zepter · очистка воды</div>
+      <div class="brand"><span class="drop" aria-hidden="true"></span>Очистка воды · сравнение</div>
       <span id="freshChip" style="margin-left:auto; font-size:12px; font-weight:600; color:var(--muted); background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:6px 11px; white-space:nowrap">Цены проверены: <span id="updated-date">18.07.2026</span></span>
       <button class="themebtn" onclick="toggleTheme()" aria-label="Сменить тему">Тема</button>
     </div>
@@ -220,19 +220,19 @@
           <thead>
             <tr>
               <th>Параметр</th>
-              <th class="th-model m-edel">EdelWasser Gold<span>PWC-670-GOLD</span></th>
+              <th class="th-model m-edel">Omoikiri 2.1.4S<span>Pure Drop · арт. 4998004</span></th>
               <th class="th-model m-evo">AqueenaEVO<span>WT-600</span></th>
               <th class="th-model m-pro">AqueenaPRO<span>под мойку</span></th>
             </tr>
           </thead>
           <tbody>
             <tr><th>Цена</th>
-              <td class="price"><s class="was" id="price-edel-t">391 500 ₸</s><span class="sale">360 000 ₸</span></td>
+              <td class="price">199 880 ₸</td>
               <td class="price" id="price-evo-t">480 600 ₸</td>
               <td class="price"><s class="was" id="price-pro-t">783 000 ₸</s><span class="sale">690 000 ₸</span></td>
             </tr>
             <tr><th>Технология</th>
-              <td>Осмос, 5 ступеней</td>
+              <td>Осмос-класс · 0,0005 мкм</td>
               <td>Осмос, <strong>7 ступеней</strong></td>
               <td>Осмос, 5 ступеней</td>
             </tr>
@@ -242,17 +242,22 @@
               <td>Нужно · 25 Вт (насос)</td>
             </tr>
             <tr><th>Накопит. бак</th>
-              <td>3,9 л</td>
+              <td>5 л</td>
               <td><span class="tag">Проточная, без бака</span></td>
               <td>9,5 л</td>
             </tr>
             <tr><th>Производительность</th>
-              <td>77–112 л/сут</td>
+              <td>~380 л/сут</td>
               <td><strong>2000 л/сут</strong> · 1,6 л/мин</td>
               <td>~75 л/сут</td>
             </tr>
+            <tr><th>Минерализатор</th>
+              <td><span class="tag best">Есть</span></td>
+              <td>Нет</td>
+              <td>Нет</td>
+            </tr>
             <tr><th>Установка</th>
-              <td>Настольная</td>
+              <td>Под мойку</td>
               <td>Настольная или под мойку</td>
               <td>Только под мойку</td>
             </tr>
@@ -261,19 +266,8 @@
               <td><span class="tag">Да · LED-панель</span></td>
               <td><span class="tag">Да · дисплей</span></td>
             </tr>
-            <tr><th>Вес (нетто)</th>
-              <td>4,5 кг</td><td>7,1 кг</td><td>11,5 кг</td>
-            </tr>
-            <tr><th>Цвет</th>
-              <td>Золотой</td><td>Золотой</td><td>Белый</td>
-            </tr>
             <tr><th>Гарантия</th>
-              <td>2 года</td><td>2 года</td><td><span class="tag best">3 года</span></td>
-            </tr>
-            <tr><th>Сертификаты</th>
-              <td><span class="tag best">NSF/ANSI 42·53·58</span></td>
-              <td>Международные</td>
-              <td>CE · RoHS · EMC</td>
+              <td><span class="tag best">3 года</span></td><td>2 года</td><td><span class="tag best">3 года</span></td>
             </tr>
           </tbody>
         </table>
@@ -287,24 +281,23 @@
         <article class="card bg-edel">
           <div class="top" style="background:var(--edel)"></div>
           <div class="body">
-            <span class="badge" style="background:var(--gold-soft); color:var(--gold)">Доступная · без света</span>
-            <h3>EdelWasser Gold</h3>
-            <div class="model-sub">PWC-670-GOLD · золотой · 4,5 кг</div>
+            <span class="badge" style="background:var(--gold-soft); color:var(--gold)">Без света · минерализатор</span>
+            <h3>Omoikiri Pure Drop 2.1.4S</h3>
+            <div class="model-sub">арт. 4998004 · под мойку · Япония</div>
             <div class="pricebox">
-              <span class="was"><span id="price-edel-c">391 500</span> ₸</span>
-              <span class="big sale">360 000</span><span class="cur">₸</span>
-              <span class="salebadge">скидка</span>
+              <span class="big">199 880</span><span class="cur">₸</span>
             </div>
             <ul class="plist">
               <li><span class="ic plus">+</span>Работает <strong>без электричества</strong> — не зависит от розетки</li>
-              <li><span class="ic plus">+</span>Самая низкая цена из трёх</li>
-              <li><span class="ic plus">+</span>Компактная, лёгкая, настольная</li>
-              <li><span class="ic plus">+</span>Сертификаты <strong>NSF/ANSI 58</strong> — золотой стандарт</li>
-              <li><span class="ic plus">+</span>Серебряный гигиенический фильтр от бактерий</li>
-              <li><span class="ic minus">−</span>Малый бак 3,9 л — для большой семьи маловато</li>
-              <li><span class="ic minus">−</span>При слабом напоре падает производительность</li>
+              <li><span class="ic plus">+</span><strong>Минерализатор</strong> — обогащает воду минералами, мягкий вкус</li>
+              <li><span class="ic plus">+</span>Японская мембрана <strong>0,0005 мкм</strong> — глубокая очистка</li>
+              <li><span class="ic plus">+</span>Гарантия <strong>3 года</strong></li>
+              <li><span class="ic plus">+</span>~380 л/сут — быстрее настольных фильтров</li>
+              <li><span class="ic plus">+</span>Замена модулей без инструмента, меньше минуты</li>
+              <li><span class="ic minus">−</span>Всего 3 сменных модуля</li>
+              <li><span class="ic minus">−</span>Только монтаж под мойку (нужен сантехник)</li>
             </ul>
-            <div class="who"><b>Кому предлагать</b>Небольшой семье, съёмному жилью, где нет розетки, бюджетным клиентам.</div>
+            <div class="who"><b>Кому предлагать</b>Тем, кто хочет чистую воду с минералами и приятным вкусом, без розетки и без переплаты за бренд.</div>
           </div>
         </article>
 
@@ -366,11 +359,11 @@
       <div class="grid2">
         <div class="row">
           <div class="q"><span class="quote">«</span>Нужно подешевле<span class="quote">»</span></div>
-          <div class="a"><span class="arrow">→</span><span class="pill edel">EdelWasser Gold</span></div>
+          <div class="a"><span class="arrow">→</span><span class="pill edel">Omoikiri 2.1.4S</span></div>
         </div>
         <div class="row">
           <div class="q"><span class="quote">«</span>Нет розетки / боюсь скачков напряжения<span class="quote">»</span></div>
-          <div class="a"><span class="arrow">→</span><span class="pill edel">EdelWasser Gold</span></div>
+          <div class="a"><span class="arrow">→</span><span class="pill edel">Omoikiri 2.1.4S</span></div>
         </div>
         <div class="row">
           <div class="q"><span class="quote">«</span>Слабое давление воды<span class="quote">»</span></div>
@@ -381,8 +374,8 @@
           <div class="a"><span class="arrow">→</span><span class="pill evo">AqueenaEVO</span></div>
         </div>
         <div class="row">
-          <div class="q"><span class="quote">«</span>Хочу самую чистую воду / боюсь химии<span class="quote">»</span></div>
-          <div class="a"><span class="arrow">→</span><span class="pill evo">AqueenaEVO</span> <span style="font-size:12.5px;color:var(--muted)">или</span> <span class="pill edel">EdelWasser</span></div>
+          <div class="q"><span class="quote">«</span>Хочу минералы в воде / приятный вкус<span class="quote">»</span></div>
+          <div class="a"><span class="arrow">→</span><span class="pill edel">Omoikiri 2.1.4S</span> <span style="font-size:12.5px;color:var(--muted)">минерализатор</span></div>
         </div>
         <div class="row">
           <div class="q"><span class="quote">«</span>Что надёжнее по гарантии<span class="quote">»</span></div>
@@ -425,8 +418,8 @@
         <details>
           <summary><span class="qic">?</span>«Говорят, осмос вреден — вымывает минералы»<span class="chev">›</span></summary>
           <div class="answer">
-            <p>Основной источник минералов для организма — еда, а не вода. Осмос делает воду безопасной, убирая вредное. Модели с постфильтром (кокосовый в PRO) улучшают вкус и структуру воды.</p>
-            <p class="say">«Минералы мы получаем в основном из пищи. Гораздо важнее убрать из воды тяжёлые металлы и хлор — а это как раз делает осмос».</p>
+            <p>Основной источник минералов для организма — еда, а не вода. Осмос делает воду безопасной, убирая вредное. А у Omoikiri есть <strong>минерализатор</strong> — он добавляет минералы обратно и улучшает вкус, так что этот вопрос закрыт полностью.</p>
+            <p class="say">«Минералы мы берём в основном из пищи. Но у Omoikiri стоит минерализатор — он обогащает воду минералами после очистки, так что вода и чистая, и полезная по вкусу».</p>
           </div>
         </details>
 
@@ -434,26 +427,26 @@
           <summary><span class="qic">?</span>«Сколько стоит обслуживание? Фильтры дорогие?»<span class="chev">›</span></summary>
           <div class="answer">
             <p>Расходники есть у всех систем. Ориентиры по замене:</p>
-            <p>• <strong>EdelWasser</strong> — мембрана служит до 20–24 мес (самый долгий ресурс), предфильтр раз в 6 мес.<br>
+            <p>• <strong>Omoikiri</strong> — мембрана 1,5–2 года, минерализатор раз в год, предфильтр раз в 3–4 мес.<br>
                • <strong>EVO</strong> — предфильтр раз в 6–12 мес, RO-модуль раз в 12–18 мес.<br>
                • <strong>PRO</strong> — большинство фильтров раз в 6 мес, мембрана и кокос раз в 12 мес.</p>
-            <p class="say">«Фильтры меняются 1–2 раза в год, это дешевле, чем возить бутылки. Индикатор сам подскажет, когда пора».</p>
+            <p class="say">«Фильтры меняются 1–2 раза в год — это дешевле, чем постоянно возить бутилированную воду».</p>
           </div>
         </details>
 
         <details>
           <summary><span class="qic">?</span>«Сложно ли установить?»<span class="chev">›</span></summary>
           <div class="answer">
-            <p><strong>EdelWasser</strong> и <strong>EVO</strong> можно поставить на столешницу — минимум работ. <strong>PRO</strong> и EVO (под мойку) требуют подключения к водопроводу — рекомендуем профессиональный монтаж, всё необходимое идёт в комплекте.</p>
+            <p><strong>EVO</strong> можно поставить на столешницу — минимум работ. <strong>Omoikiri</strong>, <strong>PRO</strong> (и EVO под мойку) подключаются к водопроводу — рекомендуем профессиональный монтаж, всё необходимое идёт в комплекте.</p>
             <p class="say">«Если не хотите сантехнических работ — берём настольный вариант. Нужен скрытый монтаж под мойку — сделает мастер, комплект уже полный».</p>
           </div>
         </details>
 
         <details>
-          <summary><span class="qic">?</span>«Чем Zepter лучше китайских фильтров с маркетплейса?»<span class="chev">›</span></summary>
+          <summary><span class="qic">?</span>«Чем Omoikiri лучше дешёвых фильтров с маркетплейса?»<span class="chev">›</span></summary>
           <div class="answer">
-            <p>Швейцарский бренд Home Art &amp; Sales Services AG, официальная гарантия (2–3 года), международные сертификаты (NSF/ANSI у EdelWasser), сервис и оригинальные расходники. Это не одноразовая покупка, а система с поддержкой.</p>
-            <p class="say">«Здесь вы платите за проверенное качество, гарантию и сервис — фильтр для питьевой воды это не то, на чём стоит экономить на здоровье».</p>
+            <p>Omoikiri — японский бренд: осмос-мембрана 0,0005 мкм + минерализатор, официальная гарантия 3 года, оригинальные модули и сервис. Дешёвые картриджные фильтры так глубоко не чистят и служат меньше.</p>
+            <p class="say">«Вы платите за японскую мембрану, минерализацию и гарантию 3 года — фильтр для питьевой воды это не то, на чём стоит экономить на здоровье».</p>
           </div>
         </details>
 
@@ -470,15 +463,14 @@
         <div class="fcard">
           <div class="ftop" style="background:var(--edel)"></div>
           <div class="fbody">
-            <h3>EdelWasser Gold</h3>
-            <div class="fmodel">PWC-670 · 4 фильтра</div>
+            <h3>Omoikiri 2.1.4S</h3>
+            <div class="fmodel">Pure Drop · 3 модуля</div>
             <table class="ftable">
-              <tr><td class="fname">NEO-SENSE предфильтр<div class="fsub">каждые 6 мес · <span class="fp" id="f-PWC-670-01">10 800 ₸</span></div></td></tr>
-              <tr><td class="fname">INNO-SENSE фильтр<div class="fsub">каждые 18 мес · <span class="fp" id="f-PWC-670-02">14 040 ₸</span></div></td></tr>
-              <tr><td class="fname">RO-мембрана<div class="fsub">каждые 20–24 мес · <span class="fp" id="f-PWC-670-03">69 120 ₸</span></div></td></tr>
-              <tr><td class="fname">Гигиенический (серебро)<div class="fsub">каждые 12–20 мес · <span class="fp" id="f-PWC-670-09N">7 020 ₸</span></div></td></tr>
+              <tr><td class="fname">V-Complex 1 (предфильтр)<div class="fsub">каждые 3–4 мес · <span class="fp">15 880 ₸</span></div></td></tr>
+              <tr><td class="fname">M-Complex 5S (мембрана)<div class="fsub">каждые 1,5–2 года · <span class="fp">57 880 ₸</span></div></td></tr>
+              <tr><td class="fname">M-Complex 4 (минерализатор)<div class="fsub">каждый год · <span class="fp">17 880 ₸</span></div></td></tr>
             </table>
-            <div class="fset">Полный комплект: <b id="fset-edel">100 980 ₸</b></div>
+            <div class="fset">Полный комплект: <b>91 640 ₸</b></div>
           </div>
         </div>
 
@@ -518,12 +510,12 @@
     <section>
       <div class="note">
         <span class="nic" aria-hidden="true">💧</span>
-        <div><strong>Главное отличие в одну фразу:</strong> EdelWasser — доступная и без электричества; EVO — максимум ступеней и воды без бака; PRO — премиум под мойку с насосом, баком и защитой от протечки. Дальше подбираем по ситуации клиента: розетка, давление воды, объём семьи и бюджет.</div>
+        <div><strong>Главное отличие в одну фразу:</strong> Omoikiri — доступный, без электричества, с минерализатором и вкусной водой; EVO — максимум ступеней и воды без бака; PRO — премиум под мойку с насосом, баком и защитой от протечки. Дальше подбираем по ситуации клиента: розетка, давление воды, объём семьи и бюджет.</div>
       </div>
     </section>
 
     <footer>
-      Данные с zepter.kz · цены обновлены: <span id="updated-date-foot">18.07.2026</span> · для внутреннего использования консультантами. Уточняйте актуальные цены и наличие перед сделкой.
+      Данные с omoikiri-kazakhstan.github.io и zepter.kz · цены EVO/PRO обновлены: <span id="updated-date-foot">18.07.2026</span> · для внутреннего использования консультантами. Уточняйте актуальные цены и наличие перед сделкой.
     </footer>
 
   </div>
@@ -542,7 +534,6 @@
     .then(function(p){
       if(!p) return;
       function set(id, txt){ var el=document.getElementById(id); if(el && txt) el.textContent=txt; }
-      if(p.edelwasser){ set('price-edel-t', p.edelwasser+' ₸'); set('price-edel-c', p.edelwasser); }
       if(p.aqueenaevo){ set('price-evo-t', p.aqueenaevo+' ₸'); set('price-evo-c', p.aqueenaevo); }
       if(p.aqueenapro){ set('price-pro-t', p.aqueenapro+' ₸'); set('price-pro-c', p.aqueenapro); }
       if(p.updated){ set('updated-date', p.updated); set('updated-date-foot', p.updated); }
@@ -550,7 +541,6 @@
         var f = p.filters;
         Object.keys(f).forEach(function(id){ set('f-' + id, f[id] ? f[id] + ' ₸' : null); });
         var groups = {
-          'fset-edel': ['PWC-670-01','PWC-670-02','PWC-670-03','PWC-670-09N'],
           'fset-evo': ['WT-600-02','WT-600-01'],
           'fset-pro': ['WT-100-72','WT-100-73','WT-100-74','WT-100-75','WT-100-15']
         };
